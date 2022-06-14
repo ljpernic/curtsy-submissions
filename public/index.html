@@ -18,7 +18,7 @@
     <title>Curtsy Submission System || Final</title>
   </head>
   <body>
-    <form class="task-form">
+    <form class="submission-form">
       <h4>Curtsy Submission System</h4>
       <div class="form-row">
         <label for="name">
@@ -27,7 +27,7 @@
         <input
           type="text"
           name="name"
-          class="task-input"
+          class="submission-input"
           placeholder="What should we call you?"
         />
       </div>
@@ -47,7 +47,7 @@
           Title:
         </label>
         <input
-          type="title"
+          type="text"
           name="title"
           class="title-input"
           placeholder="What's the title of your piece?"
@@ -58,7 +58,7 @@
           Type:
         </label>
         <select
-          type="type"
+          type="text"
           name="type"
           class="type-input"
         >
@@ -85,30 +85,31 @@
           Upload file:
         </label>
         <input
-          type="text"
+          type="file"
           name="file"
           class="file-input"
-          placeholder="Here's where the file will be uploaded"
         />
       </div>
       <div class="form-row">
         <label for="coverLetter">
           Cover letter:
         </label>
-        <input
-          type="coverLetter"
+        <textarea
+          type="text"
           name="coverLetter"
           class="cover-letter-input"
           placeholder="Tell us about yourself (optional)"
-        />
+          row="10"
+        >
+        </textarea>
       </div>
         <button type="submit" class="btn submit-btn">submit</button>
 
       <div class="form-alert"></div>
     </form>
-    <section class="tasks-container">
+    <section class="submissions-container">
       <p class="loading-text">Loading...</p>
-      <div class="tasks"></div>
+      <div class="submissions"></div>
     </section>
     <!-- axios -->
     <script

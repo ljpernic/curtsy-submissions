@@ -2,7 +2,7 @@
 
 const express = require('express');                                             // Makes express available
 const app = express();                                                          // Initializes express and its HTTP modules for this app
-const tasks = require('./routes/tasks');                                        // Makes the routes defined in routes/tasks.js available
+const submissions = require('./routes/submissions');                                        // Makes the routes defined in routes/submissions.js available
 const connectDB = require('./db/connect');                                      // Makes the database URL defined in .env and passed through db/connect.js available
 
 require('dotenv').config();                                                     // Makes dotenv package available to hide the .env file
@@ -18,7 +18,7 @@ app.use(express.json());                                                        
 
 // routes
 
-app.use('/api/v1/tasks', tasks);                                                // Where the req.body shows itself
+app.use('/api/v1/submissions', submissions);                                                // Where the req.body shows itself
 
 app.use(notFound);                                                              // Applies the 404 page-not-found error whenever applicable
 app.use(errorHandlerMiddleware);                                                // Applies the 500 server error whenever applicable

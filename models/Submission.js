@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')                                    // Makes the mongoose package available in this function
 
-const TaskSchema = new mongoose.Schema({                                // Sets the schema for all the documents/objects we'll have in our collection/database
+const SubmissionSchema = new mongoose.Schema({                                // Sets the schema for all the documents/objects we'll have in our collection/database
   name: {                                                               // Adds validators
     type: String,                                                       // Forces name submission to be a string
     required: [true, 'Please provide a name'],                          // Requires the field and offers a brief error message
@@ -30,7 +30,7 @@ const TaskSchema = new mongoose.Schema({                                // Sets 
     maxlength: [4, 'Max story length is 6000 words'],
   },
   file: {
-    type: String,
+    type: Buffer,
     required: [true, 'Please upload a file'],
   },
   coverLetter: {
@@ -39,10 +39,14 @@ const TaskSchema = new mongoose.Schema({                                // Sets 
     trim: true,
     maxlength: [3000],
   },
+  reader: {
+    type: String,
+    default: 'unassigned',                                                     // As submissions are added, they won't have a reader by default
+  },
   completed: {
     type: Boolean,
     default: false,                                                     // As submissions are added, they won't be completed by default
   },
 })
 
-module.exports = mongoose.model('Task', TaskSchema)                     // First parameter is the name that's called for the function. Second is the schema itself.
+module.exports = mongoose.model('Submission', SubmissionSchema)                     // First parameter is the name that's called for the function. Second is the schema itself.
