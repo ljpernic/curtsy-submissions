@@ -2,10 +2,10 @@
   "name": "cursty-submission-system",
   "version": "1.0.0",
   "description": "A homegrown submission system for fiction, poetry, non-fiction, and art",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [
     "submissions"
@@ -13,11 +13,15 @@
   "author": "Leon Perniciaro",
   "license": "SEE LICENSE IN <filename>",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "mongoose": "^6.3.6",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.16"
   }
 }
