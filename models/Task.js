@@ -3,13 +3,45 @@ const mongoose = require('mongoose')                                    // Makes
 const TaskSchema = new mongoose.Schema({                                // Sets the schema for all the documents/objects we'll have in our collection/database
   name: {                                                               // Adds validators
     type: String,                                                       // Forces name submission to be a string
-    required: [true, 'must provide name'],                              // Requires the field and offers a brief error message
+    required: [true, 'Please provide a name'],                          // Requires the field and offers a brief error message
     trim: true,                                                         // Cuts white space before and after submission
-    maxlength: [50, 'name can not be more than 20 characters'],         // Sets maxlength of submission entry for that field
+    maxlength: [50, 'Max length is 50 characters'],                     // Sets maxlength of submission entry for that field
   },
-  completed: {                                                          // Second field of submission
+  email: {                                                              // Adds validators
+    type: String,                                                       // Forces name submission to be a string
+    required: [true, 'Please provide an email address'],                // Requires the field and offers a brief error message
+    trim: true,                                                         // Cuts white space before and after submission
+    maxlength: [50, 'Max length is 50 characters'],                     // Sets maxlength of submission entry for that field
+  },
+  title: {
+    type: String,
+    required: [true, 'Please provide a title'],
+    trim: true,
+    maxlength: [100, 'Max length is 100 characters'],
+  },
+  type: {
+    type: String,
+    required: [true, 'Please choose a type'],
+  },
+  wordCount: {
+    type: Number,
+    required: [true, 'Numbers only please'],
+    trim: true,
+    maxlength: [4, 'Max story length is 6000 words'],
+  },
+  file: {
+    type: String,
+    required: [true, 'Please upload a file'],
+  },
+  coverLetter: {
+    type: String,
+    required: [false],
+    trim: true,
+    maxlength: [3000],
+  },
+  completed: {
     type: Boolean,
-    default: false,                                                     // As tasks are added, they won't be completed by default
+    default: false,                                                     // As submissions are added, they won't be completed by default
   },
 })
 

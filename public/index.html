@@ -15,20 +15,95 @@
     <link rel="stylesheet" href="./normalize.css" />
     <!-- main css -->
     <link rel="stylesheet" href="./main.css" />
-    <title>Task Manager || Final</title>
+    <title>Curtsy Submission System || Final</title>
   </head>
   <body>
     <form class="task-form">
-      <h4>task manager</h4>
-      <div class="form-control">
+      <h4>Curtsy Submission System</h4>
+      <div class="form-row">
+        <label for="name">
+          Name:
+        </label>
         <input
           type="text"
           name="name"
           class="task-input"
-          placeholder="e.g. wash dishes"
+          placeholder="What should we call you?"
         />
-        <button type="submit" class="btn submit-btn">submit</button>
       </div>
+      <div class="form-row">
+        <label for="email">
+          Email:
+        </label>
+        <input
+          type="email"
+          name="email"
+          class="email-input"
+          placeholder="How can we reach you?"
+        />
+      </div>
+      <div class="form-row">
+        <label for="title">
+          Title:
+        </label>
+        <input
+          type="title"
+          name="title"
+          class="title-input"
+          placeholder="What's the title of your piece?"
+        />
+      </div>
+      <div class="form-row">
+        <label for="type">
+          Type:
+        </label>
+        <select
+          type="type"
+          name="type"
+          class="type-input"
+        >
+          <option value="" disabled selected>Story, poem, article, or art?</option>
+          <option value="FICTION">Fiction</option>
+          <option value="POETRY">Poetry</option>
+          <option value="NON-FICTION">Non-fiction</option>
+          <option value="ART">Art</option>  
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="wordCount">
+          Word Count:
+        </label>
+        <input
+          type="number"
+          name="wordCount"
+          class="word-count-input"
+          placeholder="0-6000 words"
+        />
+      </div>
+      <div class="form-row">
+        <label for="file">
+          Upload file:
+        </label>
+        <input
+          type="text"
+          name="file"
+          class="file-input"
+          placeholder="Here's where the file will be uploaded"
+        />
+      </div>
+      <div class="form-row">
+        <label for="coverLetter">
+          Cover letter:
+        </label>
+        <input
+          type="coverLetter"
+          name="coverLetter"
+          class="cover-letter-input"
+          placeholder="Tell us about yourself (optional)"
+        />
+      </div>
+        <button type="submit" class="btn submit-btn">submit</button>
+
       <div class="form-alert"></div>
     </form>
     <section class="tasks-container">

@@ -2,6 +2,12 @@ const tasksDOM = document.querySelector('.tasks')                               
 const loadingDOM = document.querySelector('.loading-text')                              //// document that matches the specified selector, or group of selectors.
 const formDOM = document.querySelector('.task-form')                                    //// Some of these are for CSS, some are for content, and some are for 
 const taskInputDOM = document.querySelector('.task-input')                              //// submissions and alerts.
+const emailInputDOM = document.querySelector('.email-input')
+const titleInputDOM = document.querySelector('.title-input')
+const typeInputDOM = document.querySelector('.type-input')
+const wordCountInputDOM = document.querySelector('.word-count-input')
+const fileInputDOM = document.querySelector('.file-input')
+const coverLetterInputDOM = document.querySelector('.cover-letter-input')
 const formAlertDOM = document.querySelector('.form-alert')
 
 // Load tasks from /api/tasks
@@ -71,11 +77,31 @@ tasksDOM.addEventListener('click', async (e) => {                               
 formDOM.addEventListener('submit', async (e) => {                                           // Function with event listener for new entries
   e.preventDefault()
   const name = taskInputDOM.value                                                           // Uses input class in index.html to match name submitted there
-                                                                                            //// with name key pair here
+  const email = emailInputDOM.value
+  const title = titleInputDOM.value
+  const type = typeInputDOM.value
+  const wordCount = wordCountInputDOM.value
+  const file = fileInputDOM.value
+  const coverLetter = coverLetterInputDOM.value
+                                                                                         //// with name key pair here
   try {
-    await axios.post('/api/v1/tasks', { name })                                             // Then try to post that name value to the JSON.
+    await axios.post('/api/v1/tasks', { 
+      name, 
+      email, 
+      title,
+      type,
+      wordCount,
+      file,
+      coverLetter
+     })                                             // Then try to post that name value to the JSON.
     showTasks()                                                                             // Then show all tasks and
     taskInputDOM.value = ''                                                                 //// reset the value to null and
+    emailInputDOM.value = ''
+    titleInputDOM.value = ''
+    typeInputDOM.value = ''
+    wordCountInputDOM.value = ''
+    fileInputDOM.value = ''
+    coverLetterInputDOM.value = ''
     formAlertDOM.style.display = 'block'                                                    //// show an alert that it was successfully added
     formAlertDOM.textContent = `success, task added`
     formAlertDOM.classList.add('text-success')

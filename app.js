@@ -31,7 +31,7 @@ const start = async () => {
       console.log(`Server is listening on port ${port}...`)
     );
   } catch (error) {                                                             // If it doesn't, it logs an error
-    console.log(error);
+    console.log(error.response);
   }
 };
 

@@ -9,6 +9,7 @@ const getAllTasks = asyncWrapper(async (req, res) => {                          
 
 const createTask = asyncWrapper(async (req, res) => {                                   // Uses req.body json to create and post new task
   const task = await Task.create(req.body)
+  console.log(req.body)
   res.status(201).json({ task })
 })
 

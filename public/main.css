@@ -238,8 +238,13 @@ textarea {
     border-top-left-radius: var(--borderRadius);
     border-bottom-left-radius: var(--borderRadius);
   }
+  .email-input, .title-input, .type-input, .word-count-input, .file-input, .cover-letter-input {
+    border-radius: 0;
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+  }
   .submit-btn {
-    margin-top: 0;
+/*    margin-top: 0;*/
     width: 175px;
     border-radius: 0;
     border-top-right-radius: var(--borderRadius);
