@@ -18,15 +18,15 @@ const showSubmissions = async () => {                                           
       data: { submissions },                                                                  // Data that's returned in JSON with the submission 
     } = await axios.get('/api/v1/submissions')                                                // Looks to see if there is anything actually there
     if (submissions.length < 1) {                                                             // If there are no submissions,
-      submissionsDOM.innerHTML = '<h5 class="empty-list">No submissions in your list</h5>'          //// show "No submissions!"
-      loadingDOM.style.visibility = 'hidden'                                            //// and don't show loading.
+      submissionsDOM.innerHTML = '<h5 class="empty-list">No submissions in your list</h5>'    //// show "No submissions!"
+      loadingDOM.style.visibility = 'hidden'                                                  //// and don't show loading.
       return
     }
-    const allSubmissions = submissions                                                  // Otherwise, assign the submissions found to allSubmissions and
+    const allSubmissions = submissions                                                        // Otherwise, assign the submissions found to allSubmissions and
       .map((submission) => {                                                                  // map them into an array with
-        const { completed, _id: submissionID, name } = submission                                   //// the key pairs assigned to each individual submission
-                                                                                        // Then return HTML that gives new submission details
-        return `<div class="single-submission ${completed && 'submission-completed'}">
+        const { status, _id: submissionID, name } = submission                                //// the key pairs assigned to each individual submission
+                                                                                              // Then return HTML that gives new submission details
+        return `<div class="single-submission ${status && 'submission-status'}">
                   <h5>
                     <span>
                       <i class="far fa-check-circle"></i>

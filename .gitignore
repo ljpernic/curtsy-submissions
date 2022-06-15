@@ -1,6 +1,9 @@
 # Secret variables
 .env
 
+# Reader list
+readerList.json
+
 # Logs
 logs
 *.log

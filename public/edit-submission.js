@@ -1,6 +1,6 @@
 const submissionIDDOM = document.querySelector('.submission-edit-id')
 const submissionNameDOM = document.querySelector('.submission-edit-name')
-const submissionCompletedDOM = document.querySelector('.submission-edit-completed')
+const submissionStatusDOM = document.querySelector('.submission-edit-status')
 const editFormDOM = document.querySelector('.single-submission-form')
 const editBtnDOM = document.querySelector('.submission-edit-btn')
 const formAlertDOM = document.querySelector('.form-alert')
@@ -13,13 +13,13 @@ const showSubmission = async () => {
     const {
       data: { submission },
     } = await axios.get(`/api/v1/submissions/${id}`)
-    const { _id: submissionID, completed, name } = submission
+    const { _id: submissionID, status, name } = submission
 
     submissionIDDOM.textContent = submissionID
     submissionNameDOM.value = name
     tempName = name
-    if (completed) {
-      submissionCompletedDOM.checked = true
+    if (status) {
+      submissionStatusDOM.checked = true
     }
   } catch (error) {
     console.log(error)
@@ -33,22 +33,22 @@ editFormDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   try {
     const submissionName = submissionNameDOM.value
-    const submissionCompleted = submissionCompletedDOM.checked
-
+    const submissionStatus = submissionStatusDOM.checked
+//    console.log(submissionStatus);
     const {
       data: { submission },
     } = await axios.patch(`/api/v1/submissions/${id}`, {
       name: submissionName,
-      completed: submissionCompleted,
+      status: submissionStatus,
     })
 
-    const { _id: submissionID, completed, name } = submission
+    const { _id: submissionID, status, name } = submission
 
     submissionIDDOM.textContent = submissionID
     submissionNameDOM.value = name
     tempName = name
-    if (completed) {
-      submissionCompletedDOM.checked = true
+    if (status) {
+      submissionStatusDOM.checked = true
     }
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `success, edited submission`

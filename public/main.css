@@ -212,7 +212,7 @@ textarea {
   text-transform: capitalize;
 }
 
-.submission-form,
+.submission-form, .reader-form, .single-reader-form,
 .single-submission-form {
   width: 90vw;
   max-width: var(--fixed-width);
@@ -233,7 +233,7 @@ textarea {
   .form-control {
     display: flex;
   }
-  .submission-input {
+  .submission-input, .reader-input {
     border-radius: 0;
     border-top-left-radius: var(--borderRadius);
     border-bottom-left-radius: var(--borderRadius);
@@ -333,7 +333,7 @@ form > :last-child {
 .empty-list {
   text-align: center;
 }
-.submissions-container {
+.submissions-container, .readers-container {
   width: 100%;
   width: 90vw;
   max-width: var(--fixed-width);
@@ -341,11 +341,11 @@ form > :last-child {
   margin-top: 2rem;
   padding-bottom: 4rem;
 }
-.submissions {
+.submissions, .readers {
   display: grid;
   gap: 1rem;
 }
-.single-submission {
+.single-submission, .single-reader {
   padding: 1rem 2.5rem;
   background: var(--white);
   border-radius: var(--borderRadius);
@@ -358,7 +358,13 @@ form > :last-child {
 .single-submission:hover {
   box-shadow: var(--shadow-4);
 }
+.single-reader:hover {
+  box-shadow: var(--shadow-4);
+}
 .single-submission h5 {
+  margin-bottom: 0;
+}
+.single-reader h5 {
   margin-bottom: 0;
 }
 .single-submission span {
@@ -368,22 +374,37 @@ form > :last-child {
   margin-left: -1.25rem;
   margin-right: 1.5rem;
 }
-.single-submission .fa-check-circle {
+.single-reader span {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: -1.25rem;
+  margin-right: 1.5rem;
+}
+.single-submission, .fa-check-circle {
   font-size: 1rem;
   color: var(--green-dark);
   visibility: hidden;
 }
-.submission-completed h5 {
+.single-reader .fa-check-circle {
+  font-size: 1rem;
+  color: var(--green-dark);
+  visibility: hidden;
+}
+/*.submission-status h5 {
   text-decoration: line-through;
 }
-.submission-completed .fa-check-circle {
+.reader-status h5 {
+  text-decoration: line-through;
+}*/
+.submission-status, .reader-status .fa-check-circle {
   visibility: visible;
 }
 .loading-text {
   visibility: hidden;
 }
 /* Submission Links */
-.submission-links {
+.submission-links, .reader-links {
   display: flex;
   align-items: center;
   gap: 0 0.5rem;
@@ -429,7 +450,7 @@ form > :last-child {
   font-size: 1rem;
 }
 
-.submission-edit-completed {
+.submission-edit-status {
   width: auto;
 }
 .back-link {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')                                    // Makes the mongoose package available in this function
 
-const SubmissionSchema = new mongoose.Schema({                                // Sets the schema for all the documents/objects we'll have in our collection/database
+const SubmissionSchema = new mongoose.Schema({                          // Sets the schema for all the documents/objects we'll have in our collection/database
   name: {                                                               // Adds validators
     type: String,                                                       // Forces name submission to be a string
     required: [true, 'Please provide a name'],                          // Requires the field and offers a brief error message
@@ -41,12 +41,28 @@ const SubmissionSchema = new mongoose.Schema({                                //
   },
   reader: {
     type: String,
-    default: 'unassigned',                                                     // As submissions are added, they won't have a reader by default
+    default: 'unassigned',                                              // As submissions are added, they won't have a reader by default
   },
-  completed: {
-    type: Boolean,
-    default: false,                                                     // As submissions are added, they won't be completed by default
+  status: {
+    type: String,
+    default: 'Open',                                                    // As submissions are added, they start with status "open"
+    enum: {
+      values: [                                                         // Limits the value of "status" to only these possibilities
+        'Open', 
+        'In Progress', 
+        'Rejected', 
+        'Revision Requested',
+        'Accepted',
+        'Unassigned'
+      ],
+      message: '{VALUE} is not supported'                               // Returns error if value isn't on the list
+    },                 
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),                                                // As submissions are added, the date is automatically added
   },
 })
 
-module.exports = mongoose.model('Submission', SubmissionSchema)                     // First parameter is the name that's called for the function. Second is the schema itself.
+module.exports = mongoose.model('Submission', SubmissionSchema)         // First parameter is the name given the function that creates individual collections. 
+                                                                        //// Second is the schema itself.

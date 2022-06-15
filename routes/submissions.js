@@ -1,7 +1,8 @@
 const express = require('express')
-const router = express.Router()                                                         // This sets up the router
+const router = express.Router()                                                               // Sets up the router.
 
-const {                                                                                 // Controllers defined by controllers/submissions.js
+const {                                                                                       // Imports controllers defined by controllers/submissions.js.
+  getAllSubmissionsStatic,
   getAllSubmissions,
   createSubmission,
   getSubmission,
@@ -9,12 +10,12 @@ const {                                                                         
   deleteSubmission,
   editSubmission,
 } = require('../controllers/submissions')
-                                                                                        // the '/' is effectively the root path when it's called in app.js 
-                                                                                        //// It calls the controller function 'getAllSubmissions' defined 
-                                                                                        //// in controllers/submissions.js and uses that to complete the action here 
-                                                                                        //// Uses the createSubmission controller inside post method
+router.route('/').get(getAllSubmissions).post(createSubmission)                               // the '/' is effectively the root path when it's called in app.js, i.e.,
+router.route('/static').get(getAllSubmissionsStatic)                                          //// api/v1/submissions/, with /static being added onto it for this method.
+router.route('/:id').get(getSubmission).patch(updateSubmission).delete(deleteSubmission)      //// Basically, these assign controller functions imported from 
+                                                                                              //// controllers/submissions.js to the routes defined in app.js ('/'), 
+                                                                                              //// and use the given controller inside the given route.
 
-router.route('/').get(getAllSubmissions).post(createSubmission)
-router.route('/:id').get(getSubmission).patch(updateSubmission).delete(deleteSubmission)   //// Gets submission for specific id and either updates it or deletes it
+module.exports = router                                                                       // Makes the router available for other files.
 
-module.exports = router
+
